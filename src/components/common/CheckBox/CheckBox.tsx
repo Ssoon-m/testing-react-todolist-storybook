@@ -18,7 +18,7 @@ const CheckBox = ({
   <S.CheckBoxContainer>
     <S.CheckBoxLabel htmlFor={id} checked={checked}>
       <S.CheckBoxHiddenInput
-        name={id}
+        id={id}
         type={type}
         onChange={onChange}
         checked={checked}
@@ -29,6 +29,7 @@ const CheckBox = ({
         </S.Icon>
       </S.CheckBoxStyle>
     </S.CheckBoxLabel>
+    <S.CheckBoxText htmlFor={id}>{label}</S.CheckBoxText>
   </S.CheckBoxContainer>
 );
 

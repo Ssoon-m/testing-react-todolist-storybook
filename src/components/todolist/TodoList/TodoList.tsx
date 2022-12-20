@@ -1,14 +1,12 @@
 import React from 'react';
 import TodoItem from '../TodoItem';
 const TodoList = () => {
+  const arrayData = Array.from({ length: 10 }, (_, i) => `checkBox${i + 1}`);
   return (
     <div>
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
+      {arrayData.map((item) => (
+        <TodoItem key={item} id={item} label={item} />
+      ))}
     </div>
   );
 };

@@ -5,7 +5,6 @@ const TodoList = () => {
     <div>
       <TodoItem />
       <TodoItem />
-      <TodoItem />
     </div>
   );
 };

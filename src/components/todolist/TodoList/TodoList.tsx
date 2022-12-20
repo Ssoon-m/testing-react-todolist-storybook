@@ -5,6 +5,10 @@ const TodoList = () => {
     <div>
       <TodoItem />
       <TodoItem />
+      <TodoItem />
+      <TodoItem />
+      <TodoItem />
+      <TodoItem />
     </div>
   );
 };

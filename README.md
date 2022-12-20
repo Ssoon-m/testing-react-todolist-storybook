@@ -7,7 +7,6 @@ react + typescript 기반의 투두리스트에 대한 테스트를 스토리북
 
 더 나은 UI 테스팅에 대한 고민을 통해 사용자에게 안정적인 서비스를 제공
 
-
 ## 구현사항
 
 - 투두리스트 생성
@@ -20,9 +19,16 @@ react + typescript 기반의 투두리스트에 대한 테스트를 스토리북
 - storybook으로 interaction 테스트
 - chromatic으로 regression 테스트
 
-## 실행방법
+## 프로젝트 실행방법
 
 ```bash
 yarn
 yarn start
+```
+
+## 스토리북 실행 및 테스트
+
+```bash
+yarn storybook
+yarn test-storybook
 ```

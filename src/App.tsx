@@ -1,5 +1,6 @@
 import React from 'react';
 import { getTodoList } from './api/todolist';
+import TodoListPage from './pages/TodoListPage';
 
 function App() {
   const fetchTodoList = async () => {
@@ -9,7 +10,7 @@ function App() {
 
   fetchTodoList();
 
-  return <div style={{ fontSize: '1.4rem' }}>App입니다.</div>;
+  return <TodoListPage />;
 }
 
 export default App;

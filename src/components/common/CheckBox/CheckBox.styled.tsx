@@ -19,10 +19,11 @@ export const CheckBoxLabel = styled.label<{ checked: boolean }>`
   cursor: pointer;
 `;
 
-export const CheckBoxText = styled.label`
+export const CheckBoxText = styled.label<{ checked: boolean }>`
   display: inline-block;
   padding-left: 10px;
   position: absolute;
+  text-decoration-line: ${({ checked }) => (checked ? 'line-through' : 'none')};
   cursor: pointer;
 `;
 

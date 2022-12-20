@@ -29,7 +29,9 @@ const CheckBox = ({
         </S.Icon>
       </S.CheckBoxStyle>
     </S.CheckBoxLabel>
-    <S.CheckBoxText htmlFor={id}>{label}</S.CheckBoxText>
+    <S.CheckBoxText checked={checked} htmlFor={id}>
+      {label}
+    </S.CheckBoxText>
   </S.CheckBoxContainer>
 );
 

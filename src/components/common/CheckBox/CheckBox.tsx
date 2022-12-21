@@ -15,7 +15,7 @@ const CheckBox = ({
   label,
   onChange,
 }: Props) => (
-  <S.CheckBoxLabel checked={checked}>
+  <S.CheckBoxLabel>
     <S.CheckBoxWrapper>
       <S.CheckBox checked={checked}>
         <S.CheckBoxHiddenInput
@@ -30,7 +30,7 @@ const CheckBox = ({
         </S.CheckBoxStyle>
       </S.CheckBox>
     </S.CheckBoxWrapper>
-    {label}
+    <S.CheckBoxLabelText checked={checked}>{label}</S.CheckBoxLabelText>
   </S.CheckBoxLabel>
 );
 

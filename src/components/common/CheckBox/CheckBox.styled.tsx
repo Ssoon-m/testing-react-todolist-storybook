@@ -1,11 +1,32 @@
 import styled from '@emotion/styled';
-
-export const CheckBoxLabel = styled.label<{ checked: boolean }>`
+import { css } from '@emotion/react';
+export const CheckBoxLabel = styled.label`
   display: inline-flex;
-  text-decoration-line: ${({ checked }) => (checked ? 'line-through' : 'none')};
   align-items: center;
   cursor: pointer;
   gap: 0.8rem;
+`;
+
+export const CheckBoxLabelText = styled.div<{ checked: boolean }>`
+  position: relative;
+  &:after {
+    position: absolute;
+    content: '';
+    width: 0%;
+    height: 0.2rem;
+    left: 0;
+    top: calc(50% - 0.5rem / 2);
+    background-color: #000000;
+    transition: width 0.25s ease-in-out;
+    pointer-events: none;
+  }
+  ${({ checked }) =>
+    checked &&
+    css`
+      &:after {
+        width: 100%;
+      }
+    `}
 `;
 
 export const CheckBoxWrapper = styled.div`

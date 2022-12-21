@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import CheckBox from '@/components/common/CheckBox';
+import useMultipleKeyDown from '@/hooks/useMultipleKeyDown';
 import * as S from './TodoInputBox.style';
 
 const TodoInputBox = () => {
@@ -7,31 +8,19 @@ const TodoInputBox = () => {
   const [isFocus, setIsFocus] = useState(false);
   const [checked, setChecked] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const keyDownRef = useRef<{ [key: string]: boolean }>({});
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyup);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyup);
-    };
-  }, []);
 
-  const handleKeyDown = (event: KeyboardEvent) => {
-    keyDownRef.current[event.key] = true;
-    if (keyDownRef.current['Meta'] && event.key === 'k') handleFocusInput();
-  };
-
-  const handleKeyup = (event: KeyboardEvent) => {
-    delete keyDownRef.current[event.key];
-  };
-
-  const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(e.target.checked);
-  };
   const handleFocusInput = () => {
     inputRef.current?.focus();
     setIsFocus(true);
+  };
+
+  useMultipleKeyDown({
+    keyValue: ['Meta', 'k'],
+    triggerEvent: handleFocusInput,
+  });
+
+  const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(e.target.checked);
   };
 
   const handleBlurInput = () => {

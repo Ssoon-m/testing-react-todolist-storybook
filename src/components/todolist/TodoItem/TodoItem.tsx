@@ -10,7 +10,6 @@ interface Props {
 const TodoItem = ({ id, label }: Props) => {
   const [checked, setChecked] = useState(false);
   const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('sdf');
     setChecked(e.target.checked);
   };
   return (

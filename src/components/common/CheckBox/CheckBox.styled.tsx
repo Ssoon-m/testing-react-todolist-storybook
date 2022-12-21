@@ -3,24 +3,24 @@ import styled from '@emotion/styled';
 export const CheckBoxLabel = styled.label<{ checked: boolean }>`
   display: inline-flex;
   text-decoration-line: ${({ checked }) => (checked ? 'line-through' : 'none')};
-  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  gap: 0.5rem;
+  gap: 0.8rem;
 `;
 
 export const CheckBoxWrapper = styled.div`
   display: inline-block;
   vertical-align: middle;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
 `;
 
 export const CheckBox = styled.label<{ checked: boolean }>`
   display: inline-block;
   width: 100%;
   height: 100%;
-  border-radius: 0.4rem;
-  transition: all 0.25s ease-in-out;
+  border-radius: 0.6rem;
+  transition: background-color 0.25s ease-in-out;
   background-color: ${({ checked }) => (checked ? 'black' : '#e9ebee')};
   cursor: pointer;
 `;

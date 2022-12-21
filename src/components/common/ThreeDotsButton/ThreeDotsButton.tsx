@@ -8,7 +8,7 @@ interface Props {
 const ThreeDotsButton = ({ onClick }: Props) => {
   return (
     <S.Button onClick={onClick}>
-      <ThreeDots width="15" height="15" />
+      <ThreeDots width={15} height={15} />
     </S.Button>
   );
 };

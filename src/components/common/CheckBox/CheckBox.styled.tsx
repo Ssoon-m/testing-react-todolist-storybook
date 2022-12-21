@@ -1,16 +1,22 @@
 import styled from '@emotion/styled';
 
-export const CheckBoxContainer = styled.div`
+export const CheckBoxLabel = styled.label<{ checked: boolean }>`
+  display: inline-flex;
+  text-decoration-line: ${({ checked }) => (checked ? 'line-through' : 'none')};
+  justify-content: center;
+  cursor: pointer;
+  gap: 0.5rem;
+`;
+
+export const CheckBoxWrapper = styled.div`
   display: inline-block;
   vertical-align: middle;
-  position: relative;
   width: 1.5rem;
   height: 1.5rem;
 `;
 
-export const CheckBoxLabel = styled.label<{ checked: boolean }>`
+export const CheckBox = styled.label<{ checked: boolean }>`
   display: inline-block;
-  position: relative;
   width: 100%;
   height: 100%;
   border-radius: 0.4rem;
@@ -19,16 +25,7 @@ export const CheckBoxLabel = styled.label<{ checked: boolean }>`
   cursor: pointer;
 `;
 
-export const CheckBoxText = styled.label<{ checked: boolean }>`
-  display: inline-block;
-  padding-left: 10px;
-  position: absolute;
-  text-decoration-line: ${({ checked }) => (checked ? 'line-through' : 'none')};
-  cursor: pointer;
-`;
-
 export const CheckBoxHiddenInput = styled.input`
-  border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -43,7 +40,6 @@ export const CheckBoxStyle = styled.div<{ checked: boolean }>`
   display: inline-block;
   width: 100%;
   height: 100%;
-
   visibility: ${({ checked }) => (checked ? 'visible' : 'hidden')};
 `;
 

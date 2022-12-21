@@ -15,24 +15,23 @@ const CheckBox = ({
   label,
   onChange,
 }: Props) => (
-  <S.CheckBoxContainer>
-    <S.CheckBoxLabel htmlFor={id} checked={checked}>
-      <S.CheckBoxHiddenInput
-        id={id}
-        type={type}
-        onChange={onChange}
-        checked={checked}
-      />
-      <S.CheckBoxStyle checked={checked}>
-        <S.Icon viewBox="0 0 24 24">
-          <polyline points="19 7 10 17 5 12" />
-        </S.Icon>
-      </S.CheckBoxStyle>
-    </S.CheckBoxLabel>
-    <S.CheckBoxText checked={checked} htmlFor={id}>
-      {label}
-    </S.CheckBoxText>
-  </S.CheckBoxContainer>
+  <S.CheckBoxLabel checked={checked}>
+    <S.CheckBoxWrapper>
+      <S.CheckBox checked={checked}>
+        <S.CheckBoxHiddenInput
+          type={type}
+          onChange={onChange}
+          checked={checked}
+        />
+        <S.CheckBoxStyle checked={checked}>
+          <S.Icon viewBox="0 0 24 24">
+            <polyline points="19 7 10 17 5 12" />
+          </S.Icon>
+        </S.CheckBoxStyle>
+      </S.CheckBox>
+    </S.CheckBoxWrapper>
+    {label}
+  </S.CheckBoxLabel>
 );
 
 export default CheckBox;

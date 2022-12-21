@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CheckBox from '@/components/common/CheckBox';
 import * as S from './TodoItem.style';
+import ThreeDotsButton from '@/components/common/ThreeDotsButton';
 
 interface Props {
   id?: string;
@@ -20,6 +21,7 @@ const TodoItem = ({ id, label }: Props) => {
         label={label}
         onChange={handleChecked}
       />
+      <ThreeDotsButton />
     </S.TodoItemWrapper>
   );
 };

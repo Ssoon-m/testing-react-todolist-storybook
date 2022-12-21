@@ -7,7 +7,7 @@ const TodoListBox = () => {
     <S.Container>
       <div>
         <h2>Hello, Soonmin</h2>
-        <h3>It's Wednesday, Dec 14</h3>
+        <h3>It's Wednesday, 21</h3>
       </div>
       <TodoInputBox />
       <TodoList />

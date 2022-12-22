@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import TodoItem from '../TodoItem';
-import { useGetTodoList } from '@/api/todolist';
+import { useGetTodoList } from '@/api/todo';
 import * as S from './TodoList.style';
 
 const TodoList = () => {

@@ -20,7 +20,6 @@ const TodoListBox = () => {
         )}`}</h3>
       </div>
       <TodoInputBox />
-
       <Suspense fallback={<div>Loading.....</div>}>
         <QueryErrorBoundary>
           <TodoList />

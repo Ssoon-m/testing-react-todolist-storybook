@@ -1,0 +1,39 @@
+import client from './client';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { ITodo } from '@/types/todo';
+import { todo } from './queryKeys';
+import { AxiosError } from 'axios';
+
+const getTodoList = async () => {
+  return await client
+    .get('/todo/list')
+    .then((res) => res.data)
+    .catch((e) => Promise.reject(new Error(e)));
+};
+
+const useGetTodoList = () => {
+  return useQuery<ITodo[], AxiosError>(todo.list(), () => getTodoList());
+};
+
+const postTodo = async ({ todo }: Pick<ITodo, 'todo'>) => {
+  return await client
+    .post('/todo', {
+      todo,
+    })
+    .then((res) => res.data)
+    .catch((e) => Promise.reject(new Error(e)));
+};
+
+const usePostTodo = () => {
+  const queryClient = useQueryClient();
+  return useMutation(postTodo, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(todo.list());
+    },
+    onError: (error) => {
+      console.error(error);
+    },
+  });
+};
+
+export { useGetTodoList, usePostTodo };

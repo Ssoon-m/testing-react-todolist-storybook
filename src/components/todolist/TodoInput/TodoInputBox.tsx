@@ -1,13 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import CheckBox from '@/components/common/CheckBox';
 import useMultipleKeyDown from '@/hooks/useMultipleKeyDown';
 import * as S from './TodoInputBox.style';
+import { usePostTodo } from '@/api/todo';
 
 const TodoInputBox = () => {
   const [input, setInput] = useState('');
   const [isFocus, setIsFocus] = useState(false);
   const [checked, setChecked] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const { mutate } = usePostTodo();
 
   const handleFocusInput = () => {
     inputRef.current?.focus();
@@ -24,6 +27,8 @@ const TodoInputBox = () => {
   };
 
   const handleBlurInput = () => {
+    input && mutate({ todo: input });
+    setInput('');
     setIsFocus(false);
   };
 

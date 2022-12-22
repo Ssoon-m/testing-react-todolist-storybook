@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  display: relative;
+  position: relative;
 `;
 
 export const OverLay = styled.div`
@@ -15,6 +15,7 @@ export const OverLay = styled.div`
 
 export const Menu = styled.ul`
   position: absolute;
+  right: 0;
   padding: 0.4rem;
   border: 1px solid #cccccc;
   border-radius: 1.2rem;

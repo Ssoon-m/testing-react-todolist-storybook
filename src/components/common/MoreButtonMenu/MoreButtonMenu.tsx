@@ -7,11 +7,22 @@ import * as S from './MoreButtonMenu.style';
 
 interface Props {
   todoItemId: string;
+  onClickEdit: () => void;
 }
 
-const MoreButtonMenu = ({ todoItemId }: Props) => {
+const MoreButtonMenu = ({ todoItemId, onClickEdit }: Props) => {
   const [showMenu, setShowMenu] = useState(false);
   const { mutate } = useDeleteTodo();
+
+  const handleEdit = () => {
+    onClickEdit();
+    setShowMenu(false);
+  };
+
+  const handleDelete = () => {
+    mutate({ id: todoItemId });
+  };
+
   return (
     <S.Container>
       <ThreeDotsButton
@@ -20,11 +31,11 @@ const MoreButtonMenu = ({ todoItemId }: Props) => {
       {showMenu && (
         <>
           <S.Menu>
-            <S.MenuItem>
+            <S.MenuItem onClick={handleEdit}>
               <Edit width={20} height={20} />
               Edit
             </S.MenuItem>
-            <S.MenuItem onClick={() => mutate({ id: todoItemId })}>
+            <S.MenuItem onClick={handleDelete}>
               <TrashCan width={20} height={20} />
               Delete Task
             </S.MenuItem>

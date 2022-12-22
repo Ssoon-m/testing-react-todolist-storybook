@@ -16,7 +16,6 @@ export const TodoInputBox = styled.div`
   width: 100%;
   height: 2rem;
   display: flex;
-  gap: 0.8rem;
 `;
 
 export const Field = styled.div`

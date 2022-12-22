@@ -4,14 +4,14 @@ import * as S from './CheckBox.styled';
 interface Props {
   id?: string;
   type?: 'checkbox' | 'radio';
-  checked: boolean;
+  checked?: boolean;
   label?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 const CheckBox = ({
   id,
   type = 'checkbox',
-  checked,
+  checked = false,
   label,
   onChange,
 }: Props) => (

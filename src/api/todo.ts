@@ -59,4 +59,26 @@ const useDeleteTodo = () => {
   });
 };
 
-export { useGetTodoList, usePostTodo, useDeleteTodo };
+const patchTodo = async ({ id, todo }: Omit<ITodo, 'isChecked'>) => {
+  return await client
+    .patch('/todo', {
+      id,
+      todo,
+    })
+    .then((res) => res.data)
+    .catch((e) => Promise.reject(new Error(e)));
+};
+
+const usePatchTodo = () => {
+  const queryClient = useQueryClient();
+  return useMutation(patchTodo, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(todo.list());
+    },
+    onError: (error) => {
+      console.error(error);
+    },
+  });
+};
+
+export { useGetTodoList, usePostTodo, useDeleteTodo, usePatchTodo };

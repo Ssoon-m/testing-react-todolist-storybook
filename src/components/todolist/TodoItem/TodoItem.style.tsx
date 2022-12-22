@@ -20,3 +20,12 @@ export const TodoItemWrapper = styled.div`
     margin-bottom: 5px;
   }
 `;
+
+export const TodoInputWrapper = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+export const TodoInput = styled.input`
+  width: 100%;
+`;

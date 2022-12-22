@@ -20,7 +20,22 @@ const postTodo = rest.post(/\/todo$/, async (req, res, ctx) => {
 const deleteTodo = rest.delete(/\/todo$/, async (req, res, ctx) => {
   const { id } = await req.json();
   setTodoListMock(TodoListMock.filter((item) => item.id !== id));
-  return res(ctx.status(200));
+  return res(ctx.status(204));
 });
 
-export { getTodoList, postTodo, deleteTodo };
+const patchTodo = rest.patch(/\/todo$/, async (req, res, ctx) => {
+  const { id, todo } = await req.json();
+  setTodoListMock(
+    TodoListMock.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          todo,
+        };
+      } else return item;
+    }),
+  );
+  return res(ctx.status(201));
+});
+
+export { getTodoList, postTodo, deleteTodo, patchTodo };

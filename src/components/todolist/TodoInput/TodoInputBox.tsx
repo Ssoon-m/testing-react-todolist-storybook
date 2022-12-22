@@ -7,7 +7,6 @@ import { usePostTodo } from '@/api/todo';
 const TodoInputBox = () => {
   const [input, setInput] = useState('');
   const [isFocus, setIsFocus] = useState(false);
-  const [checked, setChecked] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const isEnteredRef = useRef(false);
 
@@ -22,10 +21,6 @@ const TodoInputBox = () => {
     keyValue: ['Meta', 'k'],
     triggerEvent: handleFocusInput,
   });
-
-  const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(e.target.checked);
-  };
 
   const handleBlurInput = () => {
     setIsFocus(false);
@@ -49,13 +44,7 @@ const TodoInputBox = () => {
   return (
     <S.TodoInputWrapper onClick={handleFocusInput} isFocus={isFocus}>
       <S.TodoInputBox>
-        {isFocus && (
-          <CheckBox
-            id="inputCheckBox"
-            checked={checked}
-            onChange={handleChecked}
-          />
-        )}
+        {isFocus && <CheckBox id="inputCheckBox" />}
         <S.Field>
           {!input && (
             <S.PlaceHolder htmlFor="input-todo" isFocus={isFocus}>

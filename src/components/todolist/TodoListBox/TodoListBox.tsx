@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import TodoList from '../TodoList';
 import TodoInputBox from '../TodoInput/TodoInputBox';
 import * as S from './TodoListBox.style';
+import { QueryErrorResetBoundary } from '@tanstack/react-query';
 
 const dayOptions = {
   weekday: 'long',
@@ -19,7 +20,11 @@ const TodoListBox = () => {
         )}`}</h3>
       </div>
       <TodoInputBox />
-      <TodoList />
+      <Suspense fallback={<div>Loading.....</div>}>
+        <QueryErrorResetBoundary>
+          <TodoList />
+        </QueryErrorResetBoundary>
+      </Suspense>
     </S.Container>
   );
 };

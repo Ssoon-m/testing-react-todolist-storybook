@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './ThreeDots.styled';
-import { ReactComponent as ThreeDots } from '@/assets/three-dots.svg';
+import { ReactComponent as ThreeDots } from '@/assets/svg/three-dots.svg';
 
 interface Props {
   onClick: () => void;

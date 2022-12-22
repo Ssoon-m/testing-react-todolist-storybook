@@ -5,10 +5,11 @@ import MoreButtonMenu from '@/components/common/MoreButtonMenu';
 interface Props {
   id?: string;
   label: string;
+  isChecked: boolean;
 }
 
-const TodoItem = ({ id, label }: Props) => {
-  const [checked, setChecked] = useState(false);
+const TodoItem = ({ id, label, isChecked }: Props) => {
+  const [checked, setChecked] = useState(isChecked);
   const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
   };

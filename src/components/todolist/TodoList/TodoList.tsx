@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import TodoItem from '../TodoItem';
+import { useGetTodoList } from '@/api/todolist';
 import * as S from './TodoList.style';
+
 const TodoList = () => {
-  const arrayData = Array.from({ length: 10 }, (_, i) => `checkBox${i + 1}`);
+  const { data } = useGetTodoList();
   return (
     <S.Container>
-      {arrayData.map((item) => (
-        <TodoItem key={item} id={item} label={item} />
+      {data?.map((item) => (
+        <TodoItem
+          key={item.id}
+          id={item.id}
+          label={item.todo}
+          isChecked={item.isChecked}
+        />
       ))}
     </S.Container>
   );

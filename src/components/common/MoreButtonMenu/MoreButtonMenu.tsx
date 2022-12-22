@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ThreeDotsButton from '../ThreeDotsButton';
-import { ReactComponent as TrashCan } from '@/assets/trash-can.svg';
-import { ReactComponent as Edit } from '@/assets/edit.svg';
+import { ReactComponent as TrashCan } from '@/assets/svg/trash-can.svg';
+import { ReactComponent as Edit } from '@/assets/svg/edit.svg';
 import * as S from './MoreButtonMenu.style';
 
 const MoreButtonMenu = () => {

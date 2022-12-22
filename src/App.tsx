@@ -1,19 +1,24 @@
 import React from 'react';
-import { getTodoList } from './api/todolist';
 import TodoListPage from './pages/TodoListPage';
 import MainLayout from './layout/MainLayout';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      useErrorBoundary: true,
+      suspense: true,
+    },
+  },
+});
+
 function App() {
-  const fetchTodoList = async () => {
-    const data = await getTodoList();
-    console.log('data', data);
-  };
-
-  fetchTodoList();
-
   return (
-    <MainLayout>
-      <TodoListPage />
-    </MainLayout>
+    <QueryClientProvider client={queryClient}>
+      <MainLayout>
+        <TodoListPage />
+      </MainLayout>
+    </QueryClientProvider>
   );
 }
 

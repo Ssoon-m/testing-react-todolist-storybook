@@ -7,6 +7,7 @@ const getTodoList = rest.get(/\/todo\/list$/, (req, res, ctx) => {
 
 const postTodo = rest.post(/\/todo$/, async (req, res, ctx) => {
   const { todo } = await req.json();
+  console.log('todo', todo);
   if (!todo) return res(ctx.status(400));
 
   TodoListMock.unshift({

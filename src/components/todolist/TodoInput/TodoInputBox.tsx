@@ -9,6 +9,7 @@ const TodoInputBox = () => {
   const [isFocus, setIsFocus] = useState(false);
   const [checked, setChecked] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isEnteredRef = useRef(false);
 
   const { mutate } = usePostTodo();
 
@@ -27,9 +28,18 @@ const TodoInputBox = () => {
   };
 
   const handleBlurInput = () => {
-    input && mutate({ todo: input });
-    setInput('');
     setIsFocus(false);
+  };
+
+  const handleKeyDownInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && input && isEnteredRef.current === false) {
+      isEnteredRef.current = true;
+      mutate({ todo: input });
+      !e.nativeEvent.isComposing && setInput('');
+    } else if (isEnteredRef.current) {
+      isEnteredRef.current = false;
+      setInput('');
+    }
   };
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,6 +67,7 @@ const TodoInputBox = () => {
             ref={inputRef}
             onBlur={handleBlurInput}
             onChange={handleChangeInput}
+            onKeyDown={handleKeyDownInput}
             value={input}
           />
         </S.Field>

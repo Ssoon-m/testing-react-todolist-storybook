@@ -3,7 +3,7 @@ import CheckBox from '@/components/common/CheckBox';
 import * as S from './TodoItem.style';
 import MoreButtonMenu from '@/components/common/MoreButtonMenu';
 interface Props {
-  id?: string;
+  id: string;
   label: string;
   isChecked: boolean;
 }
@@ -21,7 +21,7 @@ const TodoItem = ({ id, label, isChecked }: Props) => {
         label={label}
         onChange={handleChecked}
       />
-      <MoreButtonMenu />
+      <MoreButtonMenu todoItemId={id} />
     </S.TodoItemWrapper>
   );
 };

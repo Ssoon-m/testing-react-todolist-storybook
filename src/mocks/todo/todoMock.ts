@@ -1,6 +1,6 @@
 import { ITodo } from '@/types/todo';
 
-export const TodoListMock: ITodo[] = [
+export let TodoListMock: ITodo[] = [
   {
     id: Math.random().toString(36),
     todo: 'Make the logo bigger',
@@ -28,7 +28,16 @@ export const TodoListMock: ITodo[] = [
   },
   {
     id: Math.random().toString(36),
+    todo: 'Jest study',
+    isChecked: false,
+  },
+  {
+    id: Math.random().toString(36),
     todo: 'React18 suspense & error-boundary stury',
     isChecked: false,
   },
 ];
+
+export const setTodoListMock = (data: ITodo[]) => {
+  TodoListMock = data;
+};

@@ -36,4 +36,27 @@ const usePostTodo = () => {
   });
 };
 
-export { useGetTodoList, usePostTodo };
+const deleteTodo = async ({ id }: Pick<ITodo, 'id'>) => {
+  return await client
+    .delete('/todo', {
+      data: {
+        id,
+      },
+    })
+    .then((res) => res.data)
+    .catch((e) => Promise.reject(new Error(e)));
+};
+
+const useDeleteTodo = () => {
+  const queryClient = useQueryClient();
+  return useMutation(deleteTodo, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(todo.list());
+    },
+    onError: (error) => {
+      console.error(error);
+    },
+  });
+};
+
+export { useGetTodoList, usePostTodo, useDeleteTodo };

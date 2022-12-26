@@ -44,7 +44,7 @@ const TodoInputBox = () => {
   return (
     <S.TodoInputWrapper onClick={handleFocusInput} isFocus={isFocus}>
       <S.TodoInputBox>
-        {isFocus && <CheckBox id="inputCheckBox" />}
+        {isFocus && <CheckBox id="inputCheckBox" readOnly />}
         <S.Field>
           {!input && (
             <S.PlaceHolder htmlFor="input-todo" isFocus={isFocus}>

@@ -3,7 +3,8 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 // component
 import TodoListPage from '@/pages/TodoListPage';
-
+// layout
+import MainLayout from '@/layout/MainLayout';
 // msw
 import * as Todo from '@/mocks/todo/todo';
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -12,6 +13,13 @@ export default {
   component: TodoListPage,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
+  decorators: [
+    (Story, _context) => (
+      <MainLayout>
+        <Story />
+      </MainLayout>
+    ),
+  ],
   parameters: {
     msw: {
       handlers: [...Object.values(Todo)],

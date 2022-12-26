@@ -15,7 +15,7 @@ export const CheckBoxLabelText = styled.div<{ checked: boolean }>`
     width: 0%;
     height: 0.2rem;
     left: 0;
-    top: calc(50% - 0.5rem / 2);
+    top: calc(50% - 0.2rem / 2);
     background-color: #000000;
     transition: width 0.25s ease-in-out;
     pointer-events: none;

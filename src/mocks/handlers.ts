@@ -1,4 +1,4 @@
-import * as todoList from './todo/todo';
+import * as todo from './todo/todo';
 
-const objMerge = { ...todoList };
+const objMerge = { ...todo };
 export const handlers = [...Object.values(objMerge)];

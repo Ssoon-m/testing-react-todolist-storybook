@@ -1,6 +1,9 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
+import { initialize, mswDecorator } from 'msw-storybook-addon';
 const queryClient = new QueryClient();
+
+// Initialize MSW
+initialize();
 
 // global styles
 import '@/index.css';
@@ -22,4 +25,4 @@ const defaultDecorator = (Story, context) => {
     </QueryClientProvider>
   );
 };
-export const decorators = [defaultDecorator];
+export const decorators = [defaultDecorator, mswDecorator];

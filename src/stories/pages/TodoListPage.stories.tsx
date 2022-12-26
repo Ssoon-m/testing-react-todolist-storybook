@@ -7,6 +7,10 @@ import TodoListPage from '@/pages/TodoListPage';
 import MainLayout from '@/layout/MainLayout';
 // msw
 import * as Todo from '@/mocks/todo/todo';
+// testing
+import { expect } from '@storybook/jest';
+import { waitFor, userEvent, within } from '@storybook/testing-library';
+
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'pages/TodoListPage',
@@ -28,6 +32,14 @@ export default {
 } as ComponentMeta<typeof TodoListPage>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-export const Template: ComponentStory<typeof TodoListPage> = () => (
+export const Default: ComponentStory<typeof TodoListPage> = () => (
   <TodoListPage />
 );
+
+Default.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  await waitFor(() => {
+    expect(canvas.getAllByTestId('todo-item')).toHaveLength(7);
+  });
+};

@@ -40,7 +40,7 @@ const TodoItem = ({ id, label, isChecked }: Props) => {
   };
 
   return (
-    <S.TodoItemWrapper>
+    <S.TodoItemWrapper data-testid="todo-item">
       {!isTargetEdit ? (
         <CheckBox
           id={id}

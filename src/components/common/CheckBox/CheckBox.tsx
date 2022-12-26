@@ -6,6 +6,7 @@ interface Props {
   type?: 'checkbox' | 'radio';
   checked?: boolean;
   label?: string;
+  readOnly?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 const CheckBox = ({
@@ -13,6 +14,7 @@ const CheckBox = ({
   type = 'checkbox',
   checked = false,
   label,
+  readOnly = false,
   onChange,
 }: Props) => (
   <S.CheckBoxLabel>
@@ -22,6 +24,7 @@ const CheckBox = ({
           type={type}
           onChange={onChange}
           checked={checked}
+          readOnly={readOnly}
         />
         <S.CheckBoxStyle checked={checked}>
           <S.Icon viewBox="0 0 24 24">

@@ -33,7 +33,7 @@ export let TodoListMock: ITodo[] = [
   },
   {
     id: Math.random().toString(36),
-    todo: 'React18 suspense & error-boundary stury',
+    todo: 'React18 suspense & error-boundary study',
     isChecked: false,
   },
 ];

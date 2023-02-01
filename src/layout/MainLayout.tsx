@@ -1,10 +1,13 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import * as S from './MainLayout.style';
-interface Props {
-  children: React.ReactNode;
-}
-const MainLayout = ({ children }: Props) => {
-  return <S.MainLayoutWrapper>{children}</S.MainLayoutWrapper>;
+
+const MainLayout = () => {
+  return (
+    <S.MainLayoutWrapper>
+      <Outlet />
+    </S.MainLayoutWrapper>
+  );
 };
 
 export default MainLayout;

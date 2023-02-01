@@ -1,5 +1,6 @@
 import React from 'react';
-import TodoListPage from './pages/TodoListPage';
+import { RouterProvider } from 'react-router-dom';
+import router from './routes';
 import MainLayout from './layout/MainLayout';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
@@ -15,9 +16,7 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <MainLayout>
-        <TodoListPage />
-      </MainLayout>
+      <RouterProvider router={router} />
     </QueryClientProvider>
   );
 }

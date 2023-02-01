@@ -17,13 +17,7 @@ export default {
   component: TodoListPage,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
-  decorators: [
-    (Story, _context) => (
-      <MainLayout>
-        <Story />
-      </MainLayout>
-    ),
-  ],
+  decorators: [(Story, _context) => <Story />],
   parameters: {
     msw: {
       handlers: [...Object.values(Todo)],

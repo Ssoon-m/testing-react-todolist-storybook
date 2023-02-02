@@ -6,7 +6,7 @@ import MainLayout from '@/layout/MainLayout';
 const TodoListPage = lazy(() => import('@/pages/TodoListPage'));
 
 const RouteGuard = ({ children }: { children: React.ReactNode }): any => {
-  const user = true;
+  const user = false;
   if (!user) {
     return <Navigate to="/login" />;
   }

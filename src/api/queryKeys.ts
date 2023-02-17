@@ -3,4 +3,8 @@ const todo = {
   list: () => [...todo.all, 'list'] as const,
 };
 
-export { todo };
+const me = {
+  all: ['me'] as const,
+};
+
+export { todo, me };

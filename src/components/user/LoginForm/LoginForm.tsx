@@ -1,6 +1,7 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import * as S from './LoginForm.style';
-import { usePostUserLogin } from '@/api/auth';
+import { postRefreshToken, usePostUserLogin } from '@/api/auth';
+import { useGetMe, getMe } from '@/api/me';
 
 const LoginForm = () => {
   const { mutate } = usePostUserLogin();
@@ -17,7 +18,6 @@ const LoginForm = () => {
   };
 
   const handleLogin = () => {
-    console.log('password');
     mutate({ username, password });
   };
 
@@ -39,6 +39,12 @@ const LoginForm = () => {
           로그인
         </S.LoginFormSubmitButton>
       </S.LoginFormWrapper>
+      <div>
+        <button onClick={getMe}>내정보</button>
+      </div>
+      <div>
+        <button onClick={() => postRefreshToken()}>리프레쉬</button>
+      </div>
     </S.LoginFormContainer>
   );
 };

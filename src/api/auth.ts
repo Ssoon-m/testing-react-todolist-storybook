@@ -6,18 +6,22 @@ interface IUser {
   password: string;
 }
 
+interface IToken {
+  access_token: string;
+  refresh_token: string;
+}
+
 const postUserLogin = async (user: IUser) => {
   return await client
-    .post('/auth/login', user)
-    .then((res) => res.data)
-    .catch((e) => Promise.reject(new Error(e)));
+    .post<IToken>('/auth/login', user, { withCredentials: true })
+    .then((res) => res.data);
 };
 
 const usePostUserLogin = () => {
   const queryClient = useQueryClient();
   return useMutation(postUserLogin, {
-    onSuccess: () => {
-      console.log('success');
+    onSuccess: (token) => {
+      console.log('token', token);
     },
     onError: (error) => {
       console.error(error);
@@ -25,4 +29,10 @@ const usePostUserLogin = () => {
   });
 };
 
-export { postUserLogin, usePostUserLogin };
+const postRefreshToken = async (refresh?: string) => {
+  return await client
+    .post('/auth/refresh', { refresh }, { withCredentials: true })
+    .then((res) => res.data);
+};
+
+export { postUserLogin, usePostUserLogin, postRefreshToken };
